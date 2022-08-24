@@ -1,112 +1,68 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
-import type {Node} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
+  SafeAreaView,
+  Platform,
+  StatusBar,
   View,
+  Text,
 } from 'react-native';
+import React from 'react';
+import CustomImageCarousalSquare from './src/components/CustomImageCarousalSquare';
+import CustomImageCarousalLandscape from './src/components/CustomImageCarousalLandscape';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  const data = [
+    {
+      image: require('./src/assets/image-product-1.jpg'),
+    },
+    {
+      image: require('./src/assets/image-product-2.jpg'),
+    },
+    {
+      image: require('./src/assets/image-product-3.jpg'),
+    },
+    {
+      image: require('./src/assets/image-product-4.jpg'),
+    },
+  ];
+  const data2 = [
+    {
+      image: require('./src/assets/image-product-1-landscape.jpg'),
+    },
+    {
+      image: require('./src/assets/image-product-2-landscape.jpg'),
+    },
+    {
+      image: require('./src/assets/image-product-3-landscape.jpg'),
+    },
+    {
+      image: require('./src/assets/image-product-4-landscape.jpg'),
+    },
+  ];
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.carouselContainer}>
+        <Text style={styles.text}>Image Carousel Square</Text>
+        <CustomImageCarousalSquare data={data} />
+      </View>
+      <View style={styles.carouselContainer}>
+        <Text style={styles.text}>Image Carousel Landscape</Text>
+        <CustomImageCarousalLandscape data={data2} />
+      </View>
     </SafeAreaView>
   );
 };
 
+export default App;
+
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    backgroundColor: 'white',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  text: {textAlign: 'center', color: 'black', marginBottom: 10},
+  carouselContainer: {
+    marginBottom: 20,
   },
 });
-
-export default App;
