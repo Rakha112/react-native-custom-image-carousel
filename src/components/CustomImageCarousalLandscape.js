@@ -1,12 +1,14 @@
 import {StyleSheet, View, Image, useWindowDimensions} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
   useAnimatedStyle,
   interpolate,
+  useAnimatedRef,
 } from 'react-native-reanimated';
-const CustomImageCarousal = ({data}) => {
+const CustomImageCarousal = ({data, autoPlay}) => {
+  const scrollViewRef = useAnimatedRef(null);
   const [newData] = useState([
     {key: 'spacer-left'},
     ...data,
@@ -21,8 +23,24 @@ const CustomImageCarousal = ({data}) => {
       x.value = event.contentOffset.x;
     },
   });
+
+  useEffect(() => {
+    if (autoPlay) {
+      let offset = 0;
+      setInterval(() => {
+        if (offset === SIZE * (data.length - 1)) {
+          offset = 0;
+        } else {
+          offset += SIZE;
+        }
+        scrollViewRef.current.scrollTo({x: offset, y: 0});
+      }, 2000);
+    }
+  }, [SIZE, SPACER, autoPlay, data.length, scrollViewRef]);
+
   return (
     <Animated.ScrollView
+      ref={scrollViewRef}
       onScroll={onScroll}
       scrollEventThrottle={16}
       decelerationRate="fast"
