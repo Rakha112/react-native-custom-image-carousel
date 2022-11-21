@@ -22,6 +22,14 @@ Demo on Android (Left) and Ios (Rigth)
 
 ![Demo2](https://github.com/Rakha112/react-native-custom-image-carousel/blob/main/Demo3.gif)
 
+## Properties
+
+| Name         | Description                                          | Type  | Default Value |
+| :----------- | :--------------------------------------------------- | :---- | :------------ |
+| `data`       | Image data                                           | Array | **Required**  |
+| `autoPlay`   | If `true` then the carousel will auto play           | Bool  | **Required**  |
+| `pagination` | if `true` then the carousel will show the pagination | Bool  | **Required**  |
+
 ## Run Locally
 
 Clone the project
