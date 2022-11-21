@@ -14,6 +14,10 @@ Custom Image Carousel (Landscape) Demo
 
 ![Demo1](https://github.com/Rakha112/react-native-custom-image-carousel/blob/main/Demo2.gif)
 
+Pagination Demo
+
+![Demo1](https://github.com/Rakha112/react-native-custom-image-carousel/blob/main/Demo4.gif)
+
 Demo on Android (Left) and Ios (Rigth)
 
 ![Demo2](https://github.com/Rakha112/react-native-custom-image-carousel/blob/main/Demo3.gif)
