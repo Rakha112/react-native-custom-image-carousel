@@ -43,11 +43,19 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.carouselContainer}>
         <Text style={styles.text}>Image Carousel Square</Text>
-        <CustomImageCarousalSquare data={data} autoPlay={true} />
+        <CustomImageCarousalSquare
+          data={data}
+          autoPlay={true}
+          pagination={true}
+        />
       </View>
       <View style={styles.carouselContainer}>
         <Text style={styles.text}>Image Carousel Landscape</Text>
-        <CustomImageCarousalLandscape data={data2} autoPlay={false} />
+        <CustomImageCarousalLandscape
+          data={data2}
+          autoPlay={true}
+          pagination={true}
+        />
       </View>
     </SafeAreaView>
   );
